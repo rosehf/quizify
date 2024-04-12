@@ -1,0 +1,197 @@
+<!--
+    Cadet Hayden Rose HR: Google Search for syntax on script, JSON editor
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content" name="content">
+
+        <div class="header">
+          <img id="logo" src="/res/logo.png" alt="Quizify">
+          <a href="./home.html">Home</a>
+          <a href="./quiz.html">Quiz</a>
+          <a href="./profile.html">Profile</a>
+        </div>
+       <div class="quiz_container">
+        <div id="running">
+            <span id="score">Score: 0</span>
+            <span id="number">Question 1</span>
+            <span id="value">100 pts.</span>
+        </div>
+        <div id="question">
+            <p id="prompt">
+                Who was the president of the United States in 1991?
+            </p>
+            
+            <img id="qpic" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-784827-1497990102.jpg?crop=0.936xw:0.715xh;0.0208xw,0.100xh&resize=1200:*" alt="bush">
+        </div>
+        <div id="answers">
+            <div class="ans" id="a1" onclick="checkAns(this.id)">
+                <span id="atext1">John Fortnite<br>Jr. III Esq.</span> 
+            </div>
+
+            <div class="ans" id="a2" onclick="checkAns(this.id)">
+                <span id="atext2">George<br>H.W. Bush</span>
+            </div>
+
+            <div class="ans" id="a3" onclick="checkAns(this.id)">
+                <span id="atext3">Cheif<br>Keef</span>
+            </div>
+
+            <div class="ans" id="a4" onclick="checkAns(this.id)">
+                <span id="atext4">Jack<br>Hansen</span>
+            </div>
+            
+
+        </div>
+       </div>
+       <br>
+       <br>
+       <br>
+        <footer>
+          <p>
+            <a href="">Contact</a>
+            <a href="">Help</a>
+            <a href="">Work for Us</a>
+            <a href=""><img id="f" src="/res/language.png" alt="en/es"></a>
+          </p>
+    
+    
+        </footer>
+    
+      </div>
+    
+      <script>
+       
+
+        var currentQuizData;
+        var QuestionNum = 1;
+        var score = 0;
+        var quiz1 = [
+        {
+    "us": [
+      {
+        "question_number": "1",
+        "prompt": "Who was the president of the United States in 1991?",
+        "imgSrc": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-784827-1497990102.jpg?crop=0.936xw:0.715xh;0.0208xw,0.100xh&resize=1200:*",
+        "answers": [
+          "John Fortnite Jr. III Esq.",
+          "George H.W. Bush",
+          "Cheif Keef",
+          "Jack Hansen"
+        ],
+        "correctAnswer": "George H.W. Bush",
+        "correctID": "a2"
+      },
+      {
+        "question_number": "2",
+        "prompt": "What is Obama's last name?",
+        "imgSrc": "https://cdn.britannica.com/43/172743-138-545C299D/overview-Barack-Obama.jpg",
+        "answers": [
+          "Care",
+          "Joe Mama",
+          "Obama, duh",
+          "Barack"
+        ],
+        "correctAnswer": "Obama, duh",
+        "correctID": "a3"
+      },
+      {
+        "question_number": "3",
+        "prompt": "What president ended slavery?",
+        "imgSrc": "https://i.imgflip.com/7qwr6d.jpg",
+        "answers": [
+          "Abraham Lincoln",
+          "Barack Obama",
+          "Joe Biden",
+          "Donald Trump"
+        ],
+        "correctAnswer": "Abraham Lincoln",
+        "correctID": "a1"
+      },
+      {
+        "question_number": "4",
+        "prompt": "Which president was killed in Dallas?",
+        "imgSrc": "https://th.bing.com/th/id/R.f9ab1f26485292b7e089a8b833319490?rik=SfDDJPAiycCl0Q&riu=http%3a%2f%2fi2.cdn.cnn.com%2fcnnnext%2fdam%2fassets%2f160210200403-01-john-f-kennedy-life-and-career-restricted-super-169.jpg&ehk=vrX2vDDMjVdmU%2fL8V87tS5lrgA9Dycg7wzuRvHWxmgI%3d&risl=&pid=ImgRaw&r=0",
+        "answers": [
+          "John F. Kennedy",
+          "George H.W. Bush",
+          "Abraham Lincoln",
+          "George Washington"
+        ],
+        "correctAnswer": "John F. Kennedy",
+        "correctID": "a1"
+      },
+      {
+        "question_number": "5",
+        "prompt": "Who was the first president of the United States?",
+        "imgSrc": "https://th.bing.com/th/id/OIP.tBUPw5D2J_Rd4QciyiqpygAAAA?rs=1&pid=ImgDetMain",
+        "answers": [
+          "Lebron James",
+          "George H.W. Bush",
+          "Vladimir Putin",
+          "George Washington"
+        ],
+        "correctAnswer": "George Washington",
+        "correctID": "a4"
+      }
+    ]
+  }
+
+        ]
+        
+
+
+
+       
+        function loadQuiz(filePath) {
+            
+            loadQuestion(QuestionNum);
+        }
+
+        function loadQuestion(questionNumber) {
+            var numQ = questionNumber - 1;
+            updateText("number", "Question " + questionNumber);
+            updateText("prompt", quiz1[0].us[numQ].prompt);
+            updateText('a1', quiz1[0].us[numQ].answers[0]);
+            updateText('a2', quiz1[0].us[numQ].answers[1]);
+            updateText('a3', quiz1[0].us[numQ].answers[2]);
+            updateText('a4', quiz1[0].us[numQ].answers[3]);
+            document.getElementById('qpic').src = quiz1[0].us[questionNumber - 1].imgSrc;
+
+        }
+
+        function updateText(id, newText) {
+            document.getElementById(id).textContent = newText;
+        }
+
+        function checkAns(selectedID) {
+            var numQ = QuestionNum - 1;
+            if(selectedID == quiz1[0].us[numQ].correctID){
+                alert('Correct!');
+                score +=100;
+
+            }else{
+                alert('Incorrect!')
+            }
+            QuestionNum++;
+            console.log(QuestionNum);
+            updateText('score',"Score: " + score)
+            if(QuestionNum <=5){
+                loadQuestion(QuestionNum);
+            }else{
+                alert("Final Score: " + score);
+                window.location.href = "./home.html";
+            }
+            
+        }
+     </script>
+     
+</body>
+</html>

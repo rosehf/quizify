@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="content" name="content">
+
+    <div class="header">
+      <img id="logo" src="/res/logo.png" alt="Quizify">
+      <a href="./home.html">Home</a>
+      <a href="./quiz.html">Quiz</a>
+      <a href="./profile.html">Profile</a>
+    </div>
+
+    <div id="block_container">
+      <div class="big_block_cont">
+
+        <div class="big_block" id="progress_block">
+          <h3>Daily Progress</h3>
+          <progress id="progress" max="100" value="70">70%</progress>
+          <h5 id="date"></h5>
+        </div>
+  
+        <div class="big_block" id="tutorial_block">
+          <h3>New? Start Here!</h3>
+          <p>
+            With Quizify, you can explore, create, and search quizzes.
+            You can also track your progress on your account page.
+            Come back often for updates!
+          </p>
+          <button id="tutorial_btn">Tutorial</button>
+        </div>
+
+      </div>
+      <div class="small_block_cont">
+        <div class="small_block" id="rec1" onclick="navigate('./quiz.html', 0)">
+          <h4>U.S. President Quiz</h4>
+        </div>
+  
+        <div class="small_block"id="rec2"onclick="navigate('./quiz.html', 1)">
+          <h4>VMI Trivia Quiz</h4>
+        </div>
+  
+        <div class="small_block" id="rec3"onclick="navigate('./quiz.html', 2)">
+          <h4>Jeffrey Cheeseman Quiz</h4>
+        </div>
+      </div>
+    
+
+    </div>
+
+    <footer>
+      <p>
+        <a href="">Contact</a>
+        <a href="">Help</a>
+        <a href="">Work for Us</a>
+        <a href=""><img id="f" src="/res/language.png" alt="en/es"></a>
+      </p>
+
+
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("date").innerHTML = Date();
+
+    function navigate(page, quiz){
+      sessionStorage.setItem('quizselection', 'quiz');
+      window.location.href = page;
+    }
+ </script>
+ 
+</body>
+</html>
