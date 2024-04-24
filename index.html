@@ -11,8 +11,8 @@
   <div id="content" name="content">
 
     <div class="header">
-      <img id="logo" src="./res/logo.png" alt="Quizify">
-      <a href="./index.html">Home</a>
+      <img id="logo" src="/res/logo.png" alt="Quizify">
+      <a href="./home.html">Home</a>
       <a href="./quiz.html">Quiz</a>
       <a href="./profile.html">Profile</a>
     </div>
@@ -34,8 +34,6 @@
             Come back often for updates!
           </p>
           <button id="tutorial_btn">Tutorial</button>
-          <br>
-          <br>
         </div>
 
       </div>
@@ -56,20 +54,35 @@
 
     </div>
 
-    <footer>
-      <p>
-        <a href="">Contact</a>
-        <a href="">Help</a>
-        <a href="">Work for Us</a>
-        <a href=""><img id="f" src="./res/language.png" alt="en/es"></a>
-      </p>
+    
+      <div class="footer">
+        <img id="f" src="/res/language.png" alt="en/es">
+        <p>
+          <a href="">Contact</a>
+          <a href="">Help</a>
+          <a href="">Jobs</a>
+        </p>
+        <img id="chat" src="https://static.vecteezy.com/system/resources/previews/000/442/534/original/vector-chat-icon.jpg" alt="chat">
+
+        <div class="chatbot_popup" id="chat1" style="display: none;">
+          <img id="x" src="https://cdn1.iconfinder.com/data/icons/chunk/16/X-1024.png" alt="x" style="height: 10px; ;">
+          <div id="chatlog_container">
+              <p id="chatlog"></p>
+          </div>
+          
+          <input type="text" id="question" onkeydown="if(event.keyCode==13)chatBot()">
+          <input type="button" onclick="chatBot()" value="Chat">
+      </div>
+      
+
 
 
     </footer>
 
   </div>
 
-  <script>
+  <script src="/res/script/chatbot.js">
+
     document.getElementById("date").innerHTML = Date();
 
     function navigate(page, quiz){
