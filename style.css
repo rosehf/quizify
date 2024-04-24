@@ -5,6 +5,7 @@
 
 html{
     font-family: "Inter", sans-serif;
+
 }
 
 /* Styles for desktop screens */
@@ -24,21 +25,31 @@ html{
         margin-right: 10%
     }
 
+
+
     /*FOOTER Style*/
 
     footer{
         text-align: center;
-        
+        color: var(--main-block-color)
     }
 
-    footer > p > a > img{
-        width: 2%;
+    .footer{
+        justify-content: center;
+        display: flex;
+    }
+
+    .footer > p{
+        padding-left: 40%;
+        padding-right: 40%;
+    }
+
+    .footer > img{
+        width: 4%;
+        height: 4%;
         display: inline;
     }
 
-    #f{
-        margin-left: 98%;
-    }
 
 
     /*BLOCKS STYLE*/
@@ -117,6 +128,7 @@ html{
     #running > span{
         margin-left: 100px;
         margin-right: 100px;
+        
     }
 
     #qpic{
@@ -154,6 +166,20 @@ html{
         border-color: var(--main-block-color);
         border-width: 1px;
     }
+
+
+
+    .chatbot_popup {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      
+      #chatlog {
+        height: 300px;
+        width: 200px;
+        overflow-y: scroll;
+      }/*# sourceMappingURL=style.css.map */
 }
 
 /* Styles for mobile screens */
